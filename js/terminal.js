@@ -511,8 +511,8 @@ class Terminal {
   /** @private */
   _eggLs(input) {
     this._appendLines([
-      { html: '<span class="dim">This is not real shell, of course </span>' },
-      { html: '<span class="dim">but your browser does</span>' },
+      { html: '<span class="dim">Old habit? But this is not a real console, of course.</span>' },
+      { html: '<span class="dim">Your browser has one though.</span>' },
     ]);
   }
 
