@@ -44,7 +44,10 @@ class Typewriter {
     this.isComplete = false;
 
     for (var i = 0; i < this.queue.length; i++) {
-      if (this._aborted) break;
+      // If skip() already finished rendering everything (and called
+      // onComplete) while we were awaiting a delay, stop immediately
+      // instead of re-appending lines and firing onComplete again.
+      if (this._aborted || this.isComplete) return;
 
       var item = this.queue[i];
       var lineEl = document.createElement("div");
@@ -53,7 +56,7 @@ class Typewriter {
 
       // Type each character
       for (var j = 0; j < item.text.length; j++) {
-        if (this.isSkipping || this._aborted) {
+        if (this.isSkipping || this._aborted || this.isComplete) {
           lineEl.textContent = item.text;
           break;
         }
@@ -61,13 +64,18 @@ class Typewriter {
         await this._delay(this.speed);
       }
 
+      // If skip() finished during the delay above, bail out here too.
+      if (this.isComplete) return;
+
       // Ensure full text is visible
       lineEl.textContent = item.text;
       this._scrollToBottom();
     }
 
-    this.isComplete = true;
-    this.onComplete();
+    if (!this.isComplete) {
+      this.isComplete = true;
+      this.onComplete();
+    }
   }
 
   /**
