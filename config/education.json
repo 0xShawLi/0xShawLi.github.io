@@ -1,0 +1,22 @@
+[
+  {
+    "school": "University Name",
+    "degree": "M.S. in Computer Science",
+    "period": "2017 - 2019",
+    "details": [
+      "Research focus: Distributed consensus algorithms",
+      "Published paper on improved Raft implementation",
+      "Teaching assistant for Operating Systems"
+    ]
+  },
+  {
+    "school": "University Name",
+    "degree": "B.S. in Computer Science",
+    "period": "2013 - 2017",
+    "details": [
+      "GPA: 3.8/4.0",
+      "ACM-ICPC Regional Gold Medal",
+      "Outstanding Graduate Award"
+    ]
+  }
+]

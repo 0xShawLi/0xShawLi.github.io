@@ -1,0 +1,23 @@
+[
+  {
+    "company": "Tech Company A",
+    "title": "Senior Backend Engineer",
+    "period": "2022 - Present",
+    "bullets": [
+      "Led migration from monolith to microservices, reducing deployment time by 80%",
+      "Designed and implemented distributed ID generator serving 50M+ requests/day",
+      "Established observability stack (Prometheus + Grafana + Jaeger) across 200+ services",
+      "Mentored team of 4 junior engineers"
+    ]
+  },
+  {
+    "company": "Tech Company B",
+    "title": "Backend Engineer",
+    "period": "2019 - 2022",
+    "bullets": [
+      "Built real-time data pipeline processing 10M+ events/day using Kafka and Flink",
+      "Optimized database queries reducing P99 latency from 800ms to 50ms",
+      "Implemented automated deployment pipeline with zero-downtime releases"
+    ]
+  }
+]

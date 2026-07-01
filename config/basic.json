@@ -1,0 +1,13 @@
+{
+  "name": "Your Name",
+  "title": "Backend / Distributed Systems Engineer",
+  "description": "Building reliable systems at scale",
+  "social": {
+    "email": "your@email.com",
+    "github": "https://github.com/yourusername",
+    "linkedin": "https://linkedin.com/in/yourprofile",
+    "twitter": ""
+  },
+  "about": "<p>I'm a backend engineer who spends most of my time thinking about distributed systems, data consistency, and why things break at 3 AM.</p><p>I believe good infrastructure is invisible &mdash; when it works, nobody notices; when it doesn't, everybody panics. My job is to keep everybody calm.</p><p>When I'm not debugging race conditions, you can find me reading papers, contributing to open source, or pretending I understand frontend.</p>",
+  "resumeUrl": "/resume.pdf"
+}

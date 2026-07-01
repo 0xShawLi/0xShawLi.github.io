@@ -1,0 +1,20 @@
+[
+  {
+    "name": "Distributed Task Scheduler",
+    "description": "A fault-tolerant distributed task scheduling system supporting cron expressions, DAG workflows, and automatic failover. Handles 10K+ tasks/min in production.",
+    "tech": ["Go", "etcd", "gRPC", "PostgreSQL"],
+    "link": "https://github.com/yourusername/project1"
+  },
+  {
+    "name": "API Gateway",
+    "description": "High-performance API gateway with rate limiting, circuit breaking, and dynamic routing. Built as a lightweight alternative for internal microservices.",
+    "tech": ["Go", "Redis", "Prometheus"],
+    "link": "https://github.com/yourusername/project2"
+  },
+  {
+    "name": "Log Aggregation Pipeline",
+    "description": "Real-time log collection and analysis pipeline processing 500GB+/day. Features structured logging, full-text search, and alerting rules.",
+    "tech": ["Kafka", "Elasticsearch", "Go", "Kubernetes"],
+    "link": "https://github.com/yourusername/project3"
+  }
+]

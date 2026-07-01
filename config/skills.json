@@ -1,0 +1,18 @@
+[
+  {
+    "category": "Languages",
+    "items": ["Go", "Python", "Java", "SQL", "Shell", "C++"]
+  },
+  {
+    "category": "Infrastructure",
+    "items": ["Kubernetes", "Docker", "AWS", "Linux", "Terraform", "CI/CD"]
+  },
+  {
+    "category": "Databases & MQ",
+    "items": ["PostgreSQL", "Redis", "MySQL", "etcd", "Kafka", "RabbitMQ"]
+  },
+  {
+    "category": "Frameworks & Tools",
+    "items": ["gRPC", "Gin", "FastAPI", "Spring Boot", "Prometheus", "Grafana"]
+  }
+]

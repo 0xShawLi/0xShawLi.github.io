@@ -1,0 +1,250 @@
+/* === Terminal View === */
+#terminal-view {
+  background: var(--bg-terminal);
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+/* === ASCII Art Decoration (Docker whale) === */
+.terminal-ascii-art {
+  position: absolute;
+  right: 24px;
+  bottom: 60px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  line-height: 1.3;
+  color: #79c0ff;
+  opacity: 0.25;
+  pointer-events: none;
+  white-space: pre;
+  user-select: none;
+  z-index: 0;
+}
+
+/* === Terminal Header (fake window chrome) === */
+.terminal-header {
+  display: flex;
+  align-items: center;
+  padding: var(--space-sm) var(--space-md);
+  background: #161b22;
+  border-bottom: 1px solid var(--border);
+  flex-shrink: 0;
+  height: 42px;
+  user-select: none;
+}
+
+.terminal-dots {
+  display: flex;
+  gap: 7px;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  opacity: 0.9;
+}
+
+.dot-red    { background: #f85149; }
+.dot-yellow { background: #e0af68; }
+.dot-green  { background: #7ee787; }
+
+.terminal-title {
+  flex: 1;
+  text-align: center;
+  font-size: 13px;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  letter-spacing: 0.02em;
+}
+
+.skip-link {
+  font-size: 13px;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  transition: color var(--transition-fast);
+  white-space: nowrap;
+}
+
+.skip-link:hover {
+  color: var(--accent-blue);
+}
+
+/* === Terminal Output === */
+.terminal-output {
+  flex: 1;
+  overflow-y: auto;
+  padding: var(--space-lg) var(--space-lg);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1.75;
+}
+
+/* Output block (each command + response group) */
+.terminal-output .output-block {
+  margin-bottom: var(--space-md);
+  animation: fadeSlideIn 200ms ease-out;
+}
+
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Command echo (what user typed) */
+.terminal-output .command-echo {
+  color: var(--text-primary);
+}
+
+.terminal-output .command-echo .echo-prompt {
+  color: var(--accent-green);
+  margin-right: 6px;
+  font-weight: 700;
+}
+
+/* Output lines */
+.terminal-output .output-line {
+  color: var(--text-primary);
+  white-space: pre-wrap;
+  word-break: break-word;
+}
+
+.terminal-output .output-line.dim       { color: var(--text-secondary); }
+.terminal-output .output-line .cmd-name { color: var(--accent-blue); font-weight: 500; }
+.terminal-output .output-line .cmd-desc { color: var(--text-secondary); }
+.terminal-output .output-line .highlight{ color: var(--accent-blue); }
+.terminal-output .output-line .warn     { color: var(--accent-orange); }
+.terminal-output .output-line .error    { color: var(--accent-red); }
+.terminal-output .output-line .success  { color: var(--accent-green); }
+
+/* Skill output */
+.terminal-output .skill-category-name {
+  color: var(--accent-blue);
+  font-weight: 500;
+}
+
+.terminal-output .skill-items {
+  color: var(--text-secondary);
+}
+
+/* Project output */
+.terminal-output .project-name {
+  color: var(--accent-blue);
+  font-weight: 500;
+}
+
+.terminal-output .project-tech {
+  color: var(--accent-orange);
+  font-size: 12px;
+}
+
+.terminal-output .project-desc {
+  color: var(--text-secondary);
+}
+
+/* Education output */
+.terminal-output .edu-degree {
+  color: var(--accent-blue);
+  font-weight: 500;
+}
+
+.terminal-output .edu-school {
+  color: var(--text-primary);
+}
+
+.terminal-output .edu-period {
+  color: var(--text-secondary);
+}
+
+/* === Terminal Input Line === */
+.terminal-input-line {
+  display: flex;
+  align-items: center;
+  padding: var(--space-sm) var(--space-lg);
+  background: var(--bg-terminal);
+  border-top: 1px solid var(--border);
+  flex-shrink: 0;
+  min-height: 42px;
+}
+
+.prompt-symbol {
+  color: var(--accent-green);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  font-weight: 700;
+  margin-right: var(--space-sm);
+  user-select: none;
+  flex-shrink: 0;
+}
+
+.input-wrapper {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 22px;
+}
+
+.terminal-input {
+  width: 100%;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-primary);
+  font-family: var(--font-mono);
+  font-size: 14px;
+  line-height: 1.5;
+  caret-color: transparent; /* hide native caret */
+  position: relative;
+  z-index: 1;
+}
+
+/* Custom block cursor */
+.cursor-block {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  left: 0;
+  width: 8px;
+  height: 17px;
+  background: var(--accent-blue);
+  opacity: 0;
+  pointer-events: none;
+  transition: left 30ms ease;
+}
+
+.terminal-input:focus ~ .cursor-block {
+  animation: cursorBlink 1s step-end infinite;
+}
+
+@keyframes cursorBlink {
+  0%, 100% { opacity: 0.85; }
+  50%      { opacity: 0; }
+}
+
+/* === Responsive === */
+@media (max-width: 768px) {
+  .terminal-output {
+    padding: var(--space-md);
+    font-size: 13px;
+  }
+
+  .terminal-input-line {
+    padding: var(--space-sm) var(--space-md);
+  }
+
+  .terminal-header {
+    padding: var(--space-xs) var(--space-sm);
+  }
+
+  .terminal-title {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .terminal-dots {
+    display: none;
+  }
+}
