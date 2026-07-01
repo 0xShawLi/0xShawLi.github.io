@@ -500,7 +500,20 @@ class Terminal {
       return true;
     }
 
+    if (cmd.startsWith("ls") || cmd.startsWith("ll") || cmd === "pwd"){
+      this._eggLs();
+      return true;
+    }
+
     return false;
+  }
+
+  /** @private */
+  _eggLs(input) {
+    this._appendLines([
+      { html: '<span class="dim">This is not real shell, of course </span>' },
+      { html: '<span class="dim">but your browser does</span>' },
+    ]);
   }
 
   /** @private */
