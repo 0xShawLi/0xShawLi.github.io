@@ -1,13 +1,13 @@
 {
-  "name": "Your Name",
-  "title": "Backend / Distributed Systems Engineer",
-  "description": "Building reliable systems at scale",
+  "name": "Xiaochang Li",
+  "title": "Distributed Systems & Infrastructure Engineer",
+  "description": "Building reliable distributed systems that are measurable, reproducible, and operable",
   "social": {
-    "email": "your@email.com",
-    "github": "https://github.com/yourusername",
-    "linkedin": "https://linkedin.com/in/yourprofile",
+    "email": "xiaochangli.swe@gmail.com",
+    "github": "https://github.com/0xShawLi",
+    "linkedin": "https://www.linkedin.com/in/xiaochang-li",
     "twitter": ""
   },
-  "about": "<p>I'm a backend engineer who spends most of my time thinking about distributed systems, data consistency, and why things break at 3 AM.</p><p>I believe good infrastructure is invisible &mdash; when it works, nobody notices; when it doesn't, everybody panics. My job is to keep everybody calm.</p><p>When I'm not debugging race conditions, you can find me reading papers, contributing to open source, or pretending I understand frontend.</p>",
+  "about": "<p>I'm an infrastructure engineer and M.S. student at Carnegie Mellon University, focused on distributed systems, reliability, and performance engineering.</p><p>My recent work centers on replayable expert systems for distributed job diagnosis: deterministic rules handle known failures, bounded AI reasoning covers the unknown, and missed cases feed a tested, human-gated rule-evolution loop.</p><p>I also enjoy low-level performance work, CI/CD automation, and building systems whose behavior can be measured, reproduced, and trusted.</p>",
   "resumeUrl": "/resume.pdf"
 }

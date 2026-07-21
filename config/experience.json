@@ -1,23 +1,33 @@
 [
   {
-    "company": "Tech Company A",
-    "title": "Senior Backend Engineer",
-    "period": "2022 - Present",
+    "company": "ByteDance",
+    "title": "Software Engineer Intern, Infrastructure",
+    "period": "May 2026 - Present",
     "bullets": [
-      "Led migration from monolith to microservices, reducing deployment time by 80%",
-      "Designed and implemented distributed ID generator serving 50M+ requests/day",
-      "Established observability stack (Prometheus + Grafana + Jaeger) across 200+ services",
-      "Mentored team of 4 junior engineers"
+      "Designed a provenance- and lineage-aware evidence layer that normalizes scheduler state, execution history, logs, and rule outputs into canonical artifacts, allowing nested scheduling nodes to reference one cached result instead of repeating collection and computation",
+      "Built an FSM-governed online diagnosis loop that materializes immutable snapshots and executes a unified C(snapshot, knowledge) diagnoser through deterministic expert rules with a ReAct fallback, enabling reproducible decisions and offline replay",
+      "Modeled AI components as contract-bound functions in a declarative YAML workflow: the ReAct fallback handles uncovered cases, Coco converts diagnosed misses into candidate code merge requests, and Aime reviews and optimizes changes for syntax, style, and security",
+      "Engineered a human-gated offline learning loop in which Coco turns missed cases into candidate rule changes, Aime optimizes and reviews the implementation, and automated nodes replay the regression corpus before validated precedents return to the deterministic path; reduced cognitive complexity per KLOC by 54.8% and cyclomatic complexity per KLOC by 23.5%"
     ]
   },
   {
-    "company": "Tech Company B",
-    "title": "Backend Engineer",
-    "period": "2019 - 2022",
+    "company": "TikTok",
+    "title": "Software Engineering Intern",
+    "period": "Dec 2024 - Apr 2025",
     "bullets": [
-      "Built real-time data pipeline processing 10M+ events/day using Kafka and Flink",
-      "Optimized database queries reducing P99 latency from 800ms to 50ms",
-      "Implemented automated deployment pipeline with zero-downtime releases"
+      "Developed CI/CD workflows automating build, Pytest, and release stages, cutting end-to-end duration by 20% and saving more than 250 engineering hours annually",
+      "Built an LLM-based DOM analysis framework that generated 85% of functional test cases and authored 200+ backend test suites, increasing overall code coverage from 70% to 80%",
+      "Collaborated with product and UI teams to co-author 50+ API specifications for stream-resource features, reducing integration friction"
+    ]
+  },
+  {
+    "company": "Xiaoyong Private Equity Funds",
+    "title": "Software Engineer Intern",
+    "period": "Jun 2023 - Sep 2023",
+    "bullets": [
+      "Replaced Unix domain sockets with DPDK/libmemif zero-copy channels for high-frequency market-data feeds, reducing local bulk-transfer latency by 23% from 2.4 microseconds to 1.84 microseconds",
+      "Refactored the messaging layer into a custom C++ publish-subscribe model and authored 80+ Google Test suites, reaching 85% code coverage",
+      "Automated email-to-MySQL partner-report processing with Pandas, eliminating 30 minutes of manual work per report"
     ]
   }
 ]

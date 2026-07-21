@@ -1,20 +1,32 @@
 [
   {
-    "name": "Distributed Task Scheduler",
-    "description": "A fault-tolerant distributed task scheduling system supporting cron expressions, DAG workflows, and automatic failover. Handles 10K+ tasks/min in production.",
-    "tech": ["Go", "etcd", "gRPC", "PostgreSQL"],
-    "link": "https://github.com/yourusername/project1"
+    "name": "Cluster Circuit Court",
+    "description": "A precedent-driven expert system for distributed-job diagnosis. The online lower court applies deterministic rules to replayable case snapshots and escalates uncovered failures to a ReAct circuit court. Offline, Coco turns resolved misses into candidate rule changes, while Aime, regression replay, and final human review form the promotion gate before validated precedents return to the deterministic path.",
+    "tech": ["Expert Systems", "Data Lineage", "Snapshot Replay", "ReAct Agents", "Verified Rule Evolution"],
+    "link": ""
   },
   {
-    "name": "API Gateway",
-    "description": "High-performance API gateway with rate limiting, circuit breaking, and dynamic routing. Built as a lightweight alternative for internal microservices.",
-    "tech": ["Go", "Redis", "Prometheus"],
-    "link": "https://github.com/yourusername/project2"
+    "name": "MIT 6.5840 Distributed Systems Labs",
+    "description": "Implemented a MapReduce coordinator-worker runtime, a distributed key/value service, and core Raft consensus in Go, including RPC-based coordination, leader election, randomized election timeouts, and heartbeat handling.",
+    "tech": ["Go", "MapReduce", "Distributed KV", "Raft", "RPC", "Fault Tolerance"],
+    "link": ""
   },
   {
-    "name": "Log Aggregation Pipeline",
-    "description": "Real-time log collection and analysis pipeline processing 500GB+/day. Features structured logging, full-text search, and alerting rules.",
-    "tech": ["Kafka", "Elasticsearch", "Go", "Kubernetes"],
-    "link": "https://github.com/yourusername/project3"
+    "name": "Automated CI/CD Pipeline with Quality Gates",
+    "description": "Independent course project that provisioned a complete GCP delivery environment with Terraform, GKE, Jenkins, SonarQube, Dataproc, and Helm. Incremental quality gates conditionally triggered Hadoop jobs and reduced deployment time from 120 minutes to 15 minutes in the course benchmark environment.",
+    "tech": ["Terraform", "GKE", "Jenkins", "SonarQube", "Dataproc", "Helm"],
+    "link": ""
+  },
+  {
+    "name": "High-Performance Dynamic Memory Allocator",
+    "description": "Implemented segregated free lists, mini-block optimization, footer elimination, and constant-time coalescing in C, achieving 74% memory utilization and 9,662 Kops/sec throughput while exceeding the course performance target by 33%.",
+    "tech": ["C", "Systems Programming", "Memory Management", "Performance"],
+    "link": ""
+  },
+  {
+    "name": "Scalable Sentiment Analysis App",
+    "description": "Deployed a three-tier sentiment-analysis application on GKE with independently scalable React, Spring Boot, and Python services, using Kafka for asynchronous communication between application and logic layers.",
+    "tech": ["Kubernetes", "Docker", "Spring Boot", "Python", "Kafka", "GKE"],
+    "link": ""
   }
 ]
