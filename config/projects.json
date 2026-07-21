@@ -1,11 +1,5 @@
 [
   {
-    "name": "Cluster Circuit Court",
-    "description": "A precedent-driven expert system for distributed-job diagnosis. The online lower court applies deterministic rules to replayable case snapshots and escalates uncovered failures to a ReAct circuit court. Offline, Coco turns resolved misses into candidate rule changes, while Aime, regression replay, and final human review form the promotion gate before validated precedents return to the deterministic path.",
-    "tech": ["Expert Systems", "Data Lineage", "Snapshot Replay", "ReAct Agents", "Verified Rule Evolution"],
-    "link": ""
-  },
-  {
     "name": "MIT 6.5840 Distributed Systems Labs",
     "description": "Implemented a MapReduce coordinator-worker runtime, a distributed key/value service, and core Raft consensus in Go, including RPC-based coordination, leader election, randomized election timeouts, and heartbeat handling.",
     "tech": ["Go", "MapReduce", "Distributed KV", "Raft", "RPC", "Fault Tolerance"],

@@ -1,17 +1,17 @@
 [
   {
-    "company": "ByteDance",
-    "title": "Software Engineer Intern, Infrastructure",
-    "period": "May 2026 - Present",
-    "bullets": [
-      "Designed a provenance- and lineage-aware evidence layer that normalizes scheduler state, execution history, logs, and rule outputs into canonical artifacts, allowing nested scheduling nodes to reference one cached result instead of repeating collection and computation",
-      "Built an FSM-governed online diagnosis loop that materializes immutable snapshots and executes a unified C(snapshot, knowledge) diagnoser through deterministic expert rules with a ReAct fallback, enabling reproducible decisions and offline replay",
-      "Modeled AI components as contract-bound functions in a declarative YAML workflow: the ReAct fallback handles uncovered cases, Coco converts diagnosed misses into candidate code merge requests, and Aime reviews and optimizes changes for syntax, style, and security",
-      "Engineered a human-gated offline learning loop in which Coco turns missed cases into candidate rule changes, Aime optimizes and reviews the implementation, and automated nodes replay the regression corpus before validated precedents return to the deterministic path; reduced cognitive complexity per KLOC by 54.8% and cyclomatic complexity per KLOC by 23.5%"
-    ]
-  },
+  "company": "TikTok",
+  "title": "Software Engineer Intern, Infrastructure",
+  "period": "May 2026 - Present",
+  "bullets": [
+    "Designed a replayable, self-improving diagnosis platform that routes requests through deterministic expert rules with a ReAct fallback, continuously compiling validated agent reasoning into production rules through offline learning",
+    "Built replayable immutable snapshots by normalizing 8+ heterogeneous infrastructure data sources into a shared intermediate representation (IR) with provenance-aware lineage, enabling deterministic replay, cross-workflow evidence reuse, and reducing upstream IO by 66%",
+    "Designed an extensible execution model that separates data acquisition, normalization, and diagnosis into pluggable workflow nodes, allowing new infrastructure systems to integrate without modifying existing diagnosis logic",
+    "Engineered a human-gated continuous learning pipeline where agent-diagnosed misses automatically generate candidate rule changes, undergo AI-assisted review and full-corpus replay validation before approval, promoting 500+ production rules into deterministic execution"
+  ]
+},
   {
-    "company": "TikTok",
+    "company": "Bytedance",
     "title": "Software Engineering Intern",
     "period": "Dec 2024 - Apr 2025",
     "bullets": [
