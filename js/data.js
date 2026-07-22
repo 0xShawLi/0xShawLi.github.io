@@ -2,7 +2,7 @@
  * Data loader — fetches all config JSON files and merges into SITE_DATA.
  *
  * Config files (edit these to customize your portfolio):
- *   config/basic.json      — name, title, social links, about, resumeUrl
+ *   config/basic.json      — name, title, seeking, social links, about, resumeUrl
  *   config/skills.json     — skill groups
  *   config/projects.json   — project list
  *   config/experience.json — work experience
@@ -32,6 +32,7 @@ var SITE_DATA_PROMISE = (function () {
       name: basic.name,
       title: basic.title,
       description: basic.description,
+      seeking: basic.seeking,
       social: basic.social,
       about: basic.about,
       resumeUrl: basic.resumeUrl,

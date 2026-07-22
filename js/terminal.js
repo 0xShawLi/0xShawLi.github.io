@@ -22,17 +22,26 @@ class Terminal {
     this.commands = {
       help:      { fn: this._cmdHelp.bind(this),      desc: "Show available commands" },
       whoami:    { fn: this._cmdWhoami.bind(this),     desc: "Who am I?" },
-      skills:    { fn: this._cmdSkills.bind(this),     desc: "Show tech stack" },
       education: { fn: this._cmdEducation.bind(this),  desc: "Show education background" },
+      experience:{ fn: this._cmdExperience.bind(this), desc: "Show internship experience" },
       projects:  { fn: this._cmdProjects.bind(this),   desc: "Show projects / portfolio" },
+      skills:    { fn: this._cmdSkills.bind(this),     desc: "Show tech stack" },
       resume:    { fn: this._cmdResume.bind(this),     desc: "Download resume PDF" },
       download:  { fn: this._cmdResume.bind(this),     desc: "Alias for /resume" },
       ask:       { fn: this._cmdAsk.bind(this),        desc: "Got questions?" },
-      exit:      { fn: this._cmdExit.bind(this),       desc: "Skip to profile page" },
+      profile:   { fn: this._cmdProfile.bind(this),    desc: "Open profile page" },
+      exit:      { fn: this._cmdProfile.bind(this),    desc: "Alias for /profile" },
       clear:     { fn: this._cmdClear.bind(this),      desc: "Clear terminal" },
     };
 
     this._bindEvents();
+  }
+
+  /** @private */
+  _focusInput() {
+    if (!window.matchMedia("(pointer: coarse)").matches) {
+      this.inputEl.focus();
+    }
   }
 
   // ═══════════════════════════════════════════
@@ -295,7 +304,7 @@ class Terminal {
     ];
 
     Object.keys(this.commands).forEach(function (name) {
-      if (name === "download") return; // hide alias
+      if (name === "download" || name === "exit") return; // hide aliases
       var cmd = self.commands[name];
       var padding = "         ";
       var pad = padding.substring(name.length + 1);
@@ -324,8 +333,12 @@ class Terminal {
       { html: '<span class="highlight">' + self._escapeHtml(d.name) + '</span>' },
       { html: '<span class="dim">' + self._escapeHtml(d.title) + '</span>' },
       { html: '' },
-      { html: '<span class="dim">email   :</span> <a href="mailto:' + self._escapeHtml(d.social.email) + '">' + self._escapeHtml(d.social.email) + '</a>' },
     ];
+    if (d.seeking) {
+      lines.push({ html: '<span class="dim">seeking :</span> ' + self._escapeHtml(d.seeking) });
+      lines.push({ html: '' });
+    }
+    lines.push({ html: '<span class="dim">email   :</span> <a href="mailto:' + self._escapeHtml(d.social.email) + '">' + self._escapeHtml(d.social.email) + '</a>' });
     if (d.social.github) {
       lines.push({ html: '<span class="dim">github  :</span> <a href="' + self._escapeHtml(d.social.github) + '" target="_blank" rel="noopener">' + self._escapeHtml(d.social.github) + '</a>' });
     }
@@ -348,7 +361,7 @@ class Terminal {
           self._escapeHtml(group.category) +
           "</span>" +
           '<span class="skill-items">  ' +
-          group.items.join(", ") +
+          group.items.map(function (item) { return self._escapeHtml(item); }).join(", ") +
           "</span>",
       });
     });
@@ -357,7 +370,7 @@ class Terminal {
     lines.push({
       html:
         '<span class="dim">Visit the </span><span class="highlight">profile page</span>' +
-        '<span class="dim"> for a richer view \u2192 type </span><span class="highlight">/exit</span>',
+        '<span class="dim"> for a richer view \u2192 type </span><span class="highlight">/profile</span>',
     });
 
     this._appendLines(lines);
@@ -389,6 +402,38 @@ class Terminal {
   }
 
   /** @private */
+  _cmdExperience() {
+    var self = this;
+    var lines = [{ html: '<span class="dim">\u2500\u2500 Experience \u2500\u2500</span>' }, { html: "" }];
+
+    SITE_DATA.experience.forEach(function (exp, i) {
+      lines.push({
+        html:
+          '<span class="experience-company-term">' + self._escapeHtml(exp.company) + "</span>" +
+          (exp.location
+            ? ' <span class="experience-location-term">· ' + self._escapeHtml(exp.location) + "</span>"
+            : "") +
+          ' <span class="experience-period-term">(' + self._escapeHtml(exp.period) + ")</span>",
+      });
+      lines.push({
+        html: '<span class="experience-title-term">' + self._escapeHtml(exp.title) + "</span>",
+      });
+      exp.bullets.forEach(function (bullet) {
+        lines.push({ html: '  <span class="dim">\u2022</span> ' + self._escapeHtml(bullet) });
+      });
+      if (i < SITE_DATA.experience.length - 1) lines.push({ html: "" });
+    });
+
+    lines.push({ html: "" });
+    lines.push({
+      html:
+        '<span class="dim">Need the printable version? type </span><span class="highlight">/resume</span>',
+    });
+
+    this._appendLines(lines);
+  }
+
+  /** @private */
   _cmdProjects() {
     var self = this;
     var lines = [{ html: '<span class="dim">\u2500\u2500 Projects \u2500\u2500</span>' }, { html: "" }];
@@ -396,7 +441,12 @@ class Terminal {
     SITE_DATA.projects.forEach(function (proj, i) {
       lines.push({ html: '<span class="project-name">' + self._escapeHtml(proj.name) + "</span>" });
       lines.push({ html: '<span class="project-desc">' + self._escapeHtml(proj.description) + "</span>" });
-      lines.push({ html: '<span class="project-tech">[' + proj.tech.join(" \u00b7 ") + "]</span>" });
+      lines.push({
+        html:
+          '<span class="project-tech">[' +
+          proj.tech.map(function (tech) { return self._escapeHtml(tech); }).join(" \u00b7 ") +
+          "]</span>",
+      });
       if (proj.link) {
         lines.push({
           html:
@@ -438,10 +488,8 @@ class Terminal {
   _cmdAsk() {
     this._appendLines([
       { html: "" },
-      { html: '<span class="warn">  \u250c\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2510</span>' },
-      { html: '<span class="warn">  \u2502</span>  Nope, no real LLM here. (Budget constraints.)  <span class="warn">\u2502</span>' },
-      { html: '<span class="warn">  \u2502</span>  But I do read emails \u2014 usually within 24h.     <span class="warn">\u2502</span>' },
-      { html: '<span class="warn">  \u2514\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2500\u2518</span>' },
+      { html: '  <span class="warn">No real LLM here.</span> <span class="dim">(Budget constraints.)</span>' },
+      { html: '  <span class="dim">But I do read emails, usually within 24h.</span>' },
       { html: "" },
       {
         html:
@@ -451,13 +499,13 @@ class Terminal {
           this._escapeHtml(SITE_DATA.social.email) +
           "</a>",
       },
-      { html: '  <span class="dim">Or type</span> <span class="highlight">/exit</span> <span class="dim">for more contact options.</span>' },
+      { html: '  <span class="dim">Or type</span> <span class="highlight">/profile</span> <span class="dim">for more contact options.</span>' },
       { html: "" },
     ]);
   }
 
   /** @private */
-  _cmdExit() {
+  _cmdProfile() {
     this._appendLines([{ html: '<span class="dim">Switching to profile view...</span>' }]);
     var self = this;
     setTimeout(function () {
@@ -595,8 +643,8 @@ class Terminal {
     var welcomeLines = [
       "Welcome to " + SITE_DATA.name + "'s terminal portfolio.",
       "",
-      "This is an interactive terminal. Type commands to explore.",
-      "Type /help to see what's available, or just look around.",
+      "I build replayable infrastructure diagnosis systems and distributed runtimes.",
+      "Try /experience, /projects, or /resume. Type /help for everything else.",
       "",
       "Hint: press any key or click to skip this animation.",
       "",
@@ -607,7 +655,7 @@ class Terminal {
       speed: 25,
       onComplete: function () {
         self.isAnimating = false;
-        self.inputEl.focus();
+        self._focusInput();
       },
     });
     this._typewriter = typewriter;
@@ -627,7 +675,7 @@ class Terminal {
         skipped = true;
         typewriter.skip();
         self.isAnimating = false;
-        self.inputEl.focus();
+        self._focusInput();
         cleanup();
       }
     }
@@ -649,12 +697,25 @@ class Terminal {
 
     // Start animation
     await typewriter.start();
+    if (typewriter._aborted) {
+      return;
+    }
 
     // Show help after welcome
     this._cmdHelp();
-    this.inputEl.focus();
+    this._focusInput();
 
     cleanup();
+  }
+
+  /**
+   * Stop the welcome animation if the user leaves the terminal mid-stream.
+   */
+  abortWelcome() {
+    if (this._typewriter && !this._typewriter.isComplete) {
+      this._typewriter.abort();
+    }
+    this.isAnimating = false;
   }
 
   // ═══════════════════════════════════════════

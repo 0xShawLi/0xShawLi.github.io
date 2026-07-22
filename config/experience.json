@@ -3,6 +3,7 @@
   "company": "TikTok",
   "title": "Software Engineer Intern, Infrastructure",
   "period": "May 2026 - Present",
+  "location": "San Jose, CA",
   "bullets": [
     "Designed a replayable, self-improving diagnosis platform that routes requests through deterministic expert rules with a ReAct fallback, continuously compiling validated agent reasoning into production rules through offline learning",
     "Built replayable immutable snapshots by normalizing 8+ heterogeneous infrastructure data sources into a shared intermediate representation (IR) with provenance-aware lineage, enabling deterministic replay, cross-workflow evidence reuse, and reducing upstream IO by 66%",
@@ -14,6 +15,7 @@
     "company": "Bytedance",
     "title": "Software Engineering Intern",
     "period": "Dec 2024 - Apr 2025",
+    "location": "Shanghai, China",
     "bullets": [
       "Developed CI/CD workflows automating build, Pytest, and release stages, cutting end-to-end duration by 20% and saving more than 250 engineering hours annually",
       "Built an LLM-based DOM analysis framework that generated 85% of functional test cases and authored 200+ backend test suites, increasing overall code coverage from 70% to 80%",
@@ -24,6 +26,7 @@
     "company": "Xiaoyong Private Equity Funds",
     "title": "Software Engineer Intern",
     "period": "Jun 2023 - Sep 2023",
+    "location": "Shanghai, China",
     "bullets": [
       "Replaced Unix domain sockets with DPDK/libmemif zero-copy channels for high-frequency market-data feeds, reducing local bulk-transfer latency by 23% from 2.4 microseconds to 1.84 microseconds",
       "Refactored the messaging layer into a custom C++ publish-subscribe model and authored 80+ Google Test suites, reaching 85% code coverage",

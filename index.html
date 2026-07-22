@@ -1,10 +1,19 @@
 <!DOCTYPE html>
-<html lang="zh-CN">
+<html lang="en-US">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Backend Engineer Portfolio">
-  <title>Portfolio</title>
+  <meta name="description" content="Xiaochang Li is a distributed systems and infrastructure engineer focused on reliable, reproducible, and operable systems.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://0xshawli.github.io/">
+  <meta property="og:title" content="Xiaochang Li | Distributed Systems & Infrastructure Engineer">
+  <meta property="og:description" content="Distributed systems and infrastructure engineer focused on reliable, reproducible, and operable systems.">
+  <meta property="og:site_name" content="Xiaochang Li">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Xiaochang Li | Distributed Systems & Infrastructure Engineer">
+  <meta name="twitter:description" content="Distributed systems and infrastructure engineer focused on reliable, reproducible, and operable systems.">
+  <title>Xiaochang Li | Distributed Systems & Infrastructure Engineer</title>
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml">
 
   <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -27,7 +36,7 @@
         <span class="dot dot-green"></span>
       </div>
       <span class="terminal-title">portfolio — zsh</span>
-      <a href="#" id="skip-link" class="skip-link">[skip →]</a>
+      <a href="#" id="skip-link" class="skip-link" aria-label="Open profile page">[profile →]</a>
     </div>
 
     <div id="terminal-output" class="terminal-output"></div>
@@ -53,7 +62,7 @@
           class="terminal-input"
           autocomplete="off"
           spellcheck="false"
-          autofocus
+          aria-label="Terminal command"
         >
         <span class="cursor-block" id="cursor-block"></span>
       </div>
@@ -63,7 +72,7 @@
   <!-- ==================== Profile View ==================== -->
   <div id="profile-view" class="view">
     <header class="profile-header">
-      <a href="#" id="back-to-terminal" class="back-link">[$ ]</a>
+      <a href="#" id="back-to-terminal" class="back-link" aria-label="Back to terminal" title="Back to terminal">[$ ]</a>
     </header>
 
     <main class="profile-main">
@@ -82,10 +91,16 @@
           <span class="frontmatter-value" id="profile-email"></span>
         </div>
         <div class="section-frontmatter">
-          <span class="frontmatter-key">status:</span>
-          <span class="frontmatter-value status-online">online</span>
+          <span class="frontmatter-key">seeking:</span>
+          <span class="frontmatter-value" id="profile-seeking"></span>
         </div>
         <div class="about-content" id="profile-about"></div>
+        <div class="profile-actions">
+          <a href="/resume.pdf" id="profile-resume-link" class="profile-action primary" target="_blank" rel="noopener">View Resume</a>
+          <a href="" id="profile-email-link" class="profile-action">Email</a>
+          <a href="" id="profile-github-link" class="profile-action" target="_blank" rel="noopener">GitHub</a>
+          <a href="" id="profile-linkedin-link" class="profile-action" target="_blank" rel="noopener">LinkedIn</a>
+        </div>
       </section>
 
       <!-- Education -->
@@ -94,14 +109,6 @@
           <span class="section-marker">#</span> Education
         </h2>
         <div id="education-content" class="education-list"></div>
-      </section>
-
-      <!-- Skills -->
-      <section class="profile-section">
-        <h2 class="section-title">
-          <span class="section-marker">#</span> Skills
-        </h2>
-        <div id="skills-content" class="skills-grid"></div>
       </section>
 
       <!-- Experience -->
@@ -118,6 +125,14 @@
           <span class="section-marker">#</span> Projects
         </h2>
         <div id="projects-content" class="projects-list"></div>
+      </section>
+
+      <!-- Skills -->
+      <section class="profile-section">
+        <h2 class="section-title">
+          <span class="section-marker">#</span> Skills
+        </h2>
+        <div id="skills-content" class="skills-grid"></div>
       </section>
 
       <!-- Contact -->

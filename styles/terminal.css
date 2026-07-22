@@ -157,6 +157,24 @@
   color: var(--text-secondary);
 }
 
+/* Experience output */
+.terminal-output .experience-company-term {
+  color: var(--accent-blue);
+  font-weight: 500;
+}
+
+.terminal-output .experience-title-term {
+  color: var(--text-primary);
+}
+
+.terminal-output .experience-location-term {
+  color: var(--text-secondary);
+}
+
+.terminal-output .experience-period-term {
+  color: var(--text-secondary);
+}
+
 /* === Terminal Input Line === */
 .terminal-input-line {
   display: flex;

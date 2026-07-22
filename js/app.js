@@ -46,6 +46,9 @@ var App = (function () {
   };
 
   App.prototype.switchToProfile = function () {
+    if (this.terminal) {
+      this.terminal.abortWelcome();
+    }
     this.terminalView.classList.remove("active");
     this.profileView.classList.add("active");
     document.body.style.overflow = "";
@@ -59,7 +62,9 @@ var App = (function () {
 
     var inputEl = document.getElementById("terminal-input");
     setTimeout(function () {
-      inputEl.focus();
+      if (!window.matchMedia("(pointer: coarse)").matches) {
+        inputEl.focus();
+      }
     }, 350);
   };
 
@@ -74,12 +79,39 @@ var App = (function () {
     // Header frontmatter
     document.getElementById("profile-name").textContent = data.name;
     document.getElementById("profile-title").textContent = data.title;
+    document.getElementById("profile-seeking").textContent = data.seeking || "";
+    // Trusted local config: about intentionally supports a small HTML subset.
     document.getElementById("profile-about").innerHTML = data.about;
 
     // Email in frontmatter
     var emailEl = document.getElementById("profile-email");
     if (data.social.email) {
       emailEl.innerHTML = '<a href="mailto:' + escapeHtml(data.social.email) + '">' + escapeHtml(data.social.email) + '</a>';
+    }
+
+    // Primary actions
+    var resumeLink = document.getElementById("profile-resume-link");
+    resumeLink.href = data.resumeUrl;
+
+    var profileEmailLink = document.getElementById("profile-email-link");
+    if (data.social.email) {
+      profileEmailLink.href = "mailto:" + data.social.email;
+    } else {
+      profileEmailLink.style.display = "none";
+    }
+
+    var profileGithubLink = document.getElementById("profile-github-link");
+    if (data.social.github) {
+      profileGithubLink.href = data.social.github;
+    } else {
+      profileGithubLink.style.display = "none";
+    }
+
+    var profileLinkedinLink = document.getElementById("profile-linkedin-link");
+    if (data.social.linkedin) {
+      profileLinkedinLink.href = data.social.linkedin;
+    } else {
+      profileLinkedinLink.style.display = "none";
     }
 
     // Skills
@@ -135,7 +167,10 @@ var App = (function () {
         return (
           '<div class="experience-item">' +
           '<div class="experience-header">' +
-          '<span class="experience-company">' + escapeHtml(exp.company) + "</span>" +
+          '<span class="experience-company">' +
+          escapeHtml(exp.company) +
+          (exp.location ? '<span class="experience-location"> · ' + escapeHtml(exp.location) + "</span>" : "") +
+          "</span>" +
           '<span class="experience-period">' + escapeHtml(exp.period) + "</span>" +
           "</div>" +
           '<div class="experience-title">' + escapeHtml(exp.title) + "</div>" +

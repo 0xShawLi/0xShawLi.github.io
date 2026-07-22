@@ -118,6 +118,48 @@
   margin-bottom: 0;
 }
 
+/* === Profile Actions === */
+.profile-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-sm);
+  margin-top: var(--space-lg);
+}
+
+.profile-action {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-secondary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 36px;
+  padding: var(--space-sm) var(--space-md);
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  transition: color var(--transition-fast), border-color var(--transition-fast), background var(--transition-fast);
+}
+
+.profile-action:hover {
+  color: var(--accent-blue);
+  border-color: var(--accent-blue);
+  background: rgba(122, 162, 247, 0.06);
+}
+
+.profile-action.primary {
+  color: var(--bg-terminal);
+  background: var(--accent-green);
+  border-color: var(--accent-green);
+  font-weight: 600;
+}
+
+.profile-action.primary:hover {
+  color: var(--bg-terminal);
+  background: #9be9a8;
+  border-color: #9be9a8;
+}
+
 /* === Skills Grid === */
 .skills-grid {
   display: grid;
@@ -292,6 +334,12 @@
   color: var(--text-primary);
 }
 
+.experience-location {
+  color: var(--text-secondary);
+  font-size: 12px;
+  font-weight: 400;
+}
+
 .experience-period {
   font-family: var(--font-mono);
   font-size: 12px;
@@ -461,6 +509,7 @@
     flex-direction: column;
   }
 
+  .profile-action,
   .contact-link {
     justify-content: center;
   }
